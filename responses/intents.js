@@ -1,5 +1,5 @@
-const welcomeIntentHandler = (agent) => {
-  agent.add("OLAAAAAAAAAAAA!");
-};
+const testFullfilmentIntentHandler = (agent) => {
+  agent.add("pegou do heroku!");
+}
 
-export { welcomeIntentHandler };
+export {testFullfilmentIntentHandler };

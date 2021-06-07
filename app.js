@@ -2,7 +2,7 @@
 
 import { WebhookClient } from "dialogflow-fulfillment-helper";
 import express from "express";
-import { welcomeIntentHandler } from "./responses/intents.js";
+import {testFullfilmentIntentHandler } from "./responses/intents.js";
 
 const app = express();
 
@@ -14,7 +14,7 @@ const webhookProcessing = (req, res) => {
 
   let intentsMap = new Map();
 
-  intentsMap.set("Default Welcome Intent", WelcomeIntentHandler(agent));
+  intentsMap.set("fullfilment", testFullfilmentIntentHandler(agent));
 
   agent.handleRequest(intentsMap);
 };
