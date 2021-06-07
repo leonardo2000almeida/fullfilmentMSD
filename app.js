@@ -14,7 +14,7 @@ const webhookProcessing = (req, res) => {
 
   let intentsMap = new Map();
 
-  intentsMap.set("Default Welcome Intent", WelcomeIntentHandler);
+  intentsMap.set("Default Welcome Intent", WelcomeIntentHandler(agent));
 
   agent.handleRequest(intentsMap);
 };
