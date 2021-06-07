@@ -14,14 +14,10 @@ const webhookProcessing = (req, res) => {
 
   let intentsMap = new Map();
 
-  intentsMap.set('Default Welcome Intent', WelcomeIntentHandler1);
+  intentsMap.set("Default Welcome Intent", WelcomeIntentHandler);
 
   agent.handleRequest(intentsMap);
 };
-
-function WelcomeIntentHandler1(agent) {
-    agent.add('HELLOS FULFIL')
-}
 
 app.post("/", function (req, res) {
   webhookProcessing(req, res);
@@ -31,6 +27,6 @@ app.get("/", (req, res) => {
   return res.status(200).send("App on!");
 });
 
-app.listen(5000, () => {
-  console.info(`server is Running on port: ${5000}`);
+app.listen(process.env.PORT || 5000, () => {
+  console.info(`server is Running on port: ${process.env.PORT || 5000}`);
 });
