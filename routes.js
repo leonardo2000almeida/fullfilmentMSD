@@ -1,5 +1,6 @@
 const express = require("express");
 const { auth } = require("./controller/authController");
+const {getEstoqueByProduct} = require("./controller/vendasController")
 
 const router = express.Router();
 
@@ -63,8 +64,7 @@ router.get(
 );
 
 router.get("/estoque", async (req, res) => {
-  const response = "estoque";
-  res.json(response);
+  res.send(await getEstoqueByProduct(req?.headers?.email, req.headers?.product));
 });
 
 module.exports = router;

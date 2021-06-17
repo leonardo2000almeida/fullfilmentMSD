@@ -1,15 +1,18 @@
 {
-    "vendedores": [{
+    "sellers": [{
             "nome": "André Silva",
-            "email": "andresilva@msd.com"
+            "email": "andresilva@msd.com",
+            "cd": "CD Alagoas"
         },
         {
             "nome": "Raul Duarte",
-            "email": "raulduarte@msd.com"
+            "email": "raulduarte@msd.com",
+            "cd": "CD Rio Grande do Sul"
         },
         {
             "nome": "Sophia Viana",
-            "email": "sophiaviana@msd.com"
+            "email": "sophiaviana@msd.com",
+            "cd": "CD Minas Gerais"
         }
     ]
 }

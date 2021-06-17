@@ -1,7 +1,7 @@
-const { vendedores } = require("../services/autenticacao.json");
+const { sellers } = require("../services/autenticacao.json");
 
 const auth = async (email) => {
-  const result = vendedores.find((vendedor) => vendedor.email === email);
+  const result = sellers.find((seller) => seller.email === email);
   return result !== undefined
     ? { result, httpStatus: 200 }
     : { httpStatus: 404 };
