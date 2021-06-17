@@ -1,0 +1,31 @@
+[{
+    "GRUPOMERCADO": "PECUÁRIA",
+    "VENDEDOR": "Amanda da Mata",
+    "ANOMES": "2021-06",
+    "QTDE_VISIT": 1
+}, {
+    "GRUPOMERCADO": "PECUÁRIA",
+    "VENDEDOR": "Ana Sophia da Cunha",
+    "ANOMES": "2021-06",
+    "QTDE_VISIT": 1
+}, {
+    "GRUPOMERCADO": "PECUÁRIA",
+    "VENDEDOR": "André Silva",
+    "ANOMES": "2021-06",
+    "QTDE_VISIT": 1
+}, {
+    "GRUPOMERCADO": "PECUÁRIA",
+    "VENDEDOR": "Raul Duarte",
+    "ANOMES": "2021-06",
+    "QTDE_VISIT": 1
+}, {
+    "GRUPOMERCADO": "PECUÁRIA",
+    "VENDEDOR": "Sophia Viana",
+    "ANOMES": "2021-06",
+    "QTDE_VISIT": 2
+}, {
+    "GRUPOMERCADO": "SUINOCULTURA",
+    "VENDEDOR": "Larissa Duarte",
+    "ANOMES": "2021-06",
+    "QTDE_VISIT": 1
+}]

@@ -1,0 +1,43 @@
+[{
+    "GRUPOMERCADO": "PECUÁRIA",
+    "REGIONAL": "REGIONAL 1",
+    "VENDEDOR": "André Silva",
+    "DATAVISITA": "2021-06-15T03:00:00.000Z",
+    "CLIENTE": "Provider Frontier Incorporated",
+    "ACAO": "Visita"
+}, {
+    "GRUPOMERCADO": "PECUÁRIA",
+    "REGIONAL": "REGIONAL 40",
+    "VENDEDOR": "Raul Duarte",
+    "DATAVISITA": "2021-06-15T03:00:00.000Z",
+    "CLIENTE": "Architecture Solutions Incorporated",
+    "ACAO": "Visita"
+}, {
+    "GRUPOMERCADO": "PECUÁRIA",
+    "REGIONAL": "REGIONAL 27",
+    "VENDEDOR": "Sophia Viana",
+    "DATAVISITA": "2021-06-15T03:00:00.000Z",
+    "CLIENTE": "Technology LLC",
+    "ACAO": "Visita"
+}, {
+    "GRUPOMERCADO": "PECUÁRIA",
+    "REGIONAL": "REGIONAL 27",
+    "VENDEDOR": "Sophia Viana",
+    "DATAVISITA": "2021-06-15T03:00:00.000Z",
+    "CLIENTE": "North Virtual South Inc",
+    "ACAO": "Visita"
+}, {
+    "GRUPOMERCADO": "PECUÁRIA",
+    "REGIONAL": "REGIONAL 27",
+    "VENDEDOR": "Ana Sophia da Cunha",
+    "DATAVISITA": "2021-06-15T03:00:00.000Z",
+    "CLIENTE": "Net Star Limited",
+    "ACAO": "Visita"
+}, {
+    "GRUPOMERCADO": "SUINOCULTURA",
+    "REGIONAL": "REGIONAL 6",
+    "VENDEDOR": "Larissa Duarte",
+    "DATAVISITA": "2021-06-15T03:00:00.000Z",
+    "CLIENTE": "Internet Solutions International",
+    "ACAO": "Visita"
+}]

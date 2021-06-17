@@ -1,0 +1,15 @@
+{
+    "vendedores": [{
+            "nome": "André Silva",
+            "email": "andresilva@msd.com"
+        },
+        {
+            "nome": "Raul Duarte",
+            "email": "raulduarte@msd.com"
+        },
+        {
+            "nome": "Sophia Viana",
+            "email": "sophiaviana@msd.com"
+        }
+    ]
+}

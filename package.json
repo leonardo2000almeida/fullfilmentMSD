@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],
@@ -16,8 +15,7 @@
     "nodemon": "^2.0.7"
   },
   "dependencies": {
-    "actions-on-google": "^2.14.0",
-    "dialogflow-fulfillment-helper": "^0.6.11",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1"
   }
 }
