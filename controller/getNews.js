@@ -13,6 +13,7 @@ const getNews = async () => {
       return news.push(`${process.env.LINK}${e.attribs?.href}`);
     }
   });
+  
   return news;
 };
 

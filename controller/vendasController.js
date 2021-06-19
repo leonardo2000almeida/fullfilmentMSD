@@ -1,5 +1,6 @@
 const { products } = require("../services/estoque.json");
 const { sellers } = require("../services/autenticacao.json");
+const topVendas = require("../services/realizadoXcotaVendedorMes.json");
 
 const getEstoqueByProduct = async (userEmail, productName) => {
   let quant = 0;
@@ -13,4 +14,17 @@ const getEstoqueByProduct = async (userEmail, productName) => {
   return { quant };
 };
 
-module.exports = { getEstoqueByProduct };
+const getTopVendas = async () => {
+  let values = [];
+  let count = 0;
+  const bigger = topVendas.map(({ PRODUTO }, index) => {
+    if (PRODUTO === topVendas[index + 1]?.PRODUTO && count < 5) {
+      count++;
+      return values.push(PRODUTO);
+    }
+  });
+
+  return { values };
+};
+
+module.exports = { getEstoqueByProduct, getTopVendas };
