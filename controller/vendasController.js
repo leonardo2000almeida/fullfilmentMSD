@@ -9,7 +9,7 @@ const getEstoqueByProduct = async (userEmail, productName) => {
       PRODUTO === productName.toUpperCase() && NOMECENTRODISTRIBUICAO == cd
   );
 
-  filtered.forEach(({ QUANTIDADE }) => (quant += QUANTIDADE));
+  filtered.forEach(({ QUANTIDADE }) => (quant += parseInt(QUANTIDADE)))
   return { quant };
 };
 

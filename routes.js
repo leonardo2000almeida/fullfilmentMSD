@@ -1,6 +1,8 @@
 const express = require("express");
 const { auth } = require("./controller/authController");
-const {getEstoqueByProduct} = require("./controller/vendasController")
+const { getTopVendas } = require("./controller/produtoController");
+const {getEstoqueByProduct} = require("./controller/vendasController");
+const { checkVisits } = require("./controller/visitasController");
 
 const router = express.Router();
 
@@ -28,8 +30,7 @@ router.get("/realizadoXcotaVendedor", async (req, res) => {
   res.json(response);
 });
 router.get("/realizadoXcotaVendedorMes", async (req, res) => {
-  const response = "realizadoXcotaVendedorMes";
-  res.json(response);
+  res.send(await getTopVendas());
 });
 router.get("/realizadoClientePeriodo", async (req, res) => {
   const response = "realizadoClientePeriodo";
@@ -52,8 +53,7 @@ router.get("/qntVisitasNaoConcluidasVendedor", async (req, res) => {
   res.json(response);
 });
 router.get("/infoPlanejamentoProxVisitasStatus", async (req, res) => {
-  const response = "infoPlanejamentoProxVisitasStatus";
-  res.json(response);
+  res.send(await checkVisits(req?.headers?.email))
 });
 router.get(
   "/saberAtiviNaoRelacionadasComVisitaMesVendedor",
