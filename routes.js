@@ -1,5 +1,6 @@
 const express = require("express");
 const { auth } = require("./controller/authController");
+const { getNews} = require("./controller/getNews");
 const { getTopVendas } = require("./controller/produtoController");
 const {getEstoqueByProduct} = require("./controller/vendasController");
 const { checkVisits } = require("./controller/visitasController");
@@ -66,5 +67,9 @@ router.get(
 router.get("/estoque", async (req, res) => {
   res.send(await getEstoqueByProduct(req?.headers?.email, req.headers?.product));
 });
+
+router.get("/noticias", async (req, res) => {
+  res.send(await getNews())
+})
 
 module.exports = router;
