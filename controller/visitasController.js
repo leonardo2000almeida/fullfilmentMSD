@@ -3,6 +3,7 @@ const unfineshedVistis = require("../services/qntVisitasNaoConcluidasVendedor.js
 const unfineshedMonth = require("../services/qntVisitasNaoConcluidasMes.json");
 const totalVisits = require("../services/qntVisitasUnidadeMes.json");
 const { sellers } = require("../services/autenticacao.json");
+const moment = require("moment");
 
 const checkVisits = async (userEmail) => {
   const { nome } = sellers.find(({ email }) => userEmail === email);
@@ -14,7 +15,7 @@ const checkVisits = async (userEmail) => {
     text.push(`Data: ${moment(DATAVISITA).format("DD/MM/yyyy")}`);
   });
   
-  return { items: text };
+  return { text };
 };
 
 const checkUnfinishedVisits = async (userEmail) => {
