@@ -1,6 +1,7 @@
 const { products } = require("../services/estoque.json");
 const { sellers } = require("../services/autenticacao.json");
 const topVendas = require("../services/realizadoXcotaVendedorMes.json");
+const sellsByFamily = require("../services/realizadoXcotaFamilia.json");
 
 const getEstoqueByProduct = async (userEmail, productName) => {
   let quant = 0;
@@ -10,7 +11,7 @@ const getEstoqueByProduct = async (userEmail, productName) => {
       PRODUTO === productName.toUpperCase() && NOMECENTRODISTRIBUICAO == cd
   );
 
-  filtered.forEach(({ QUANTIDADE }) => (quant += parseInt(QUANTIDADE)))
+  filtered.forEach(({ QUANTIDADE }) => (quant += parseInt(QUANTIDADE)));
   return { quant };
 };
 
@@ -27,4 +28,16 @@ const getTopVendas = async () => {
   return { values };
 };
 
-module.exports = { getEstoqueByProduct, getTopVendas };
+const getVendasByFamily = async (linha) => {
+  const sells = [];
+  sellsByFamily.map(
+    ({ NOMEFAMILIAPRODUTO, VALORLIQUIDO, PRODUTO, MES, VENDEDOR }, index) => {
+      if (index < 25 && VALORLIQUIDO !== 0 && NOMEFAMILIAPRODUTO == linha) {
+        sells.push({NOMEFAMILIAPRODUTO, VALORLIQUIDO, PRODUTO});
+      }
+    }
+  ); 
+  return sells;
+};
+
+module.exports = { getEstoqueByProduct, getTopVendas, getVendasByFamily };

@@ -5,16 +5,16 @@ require("dotenv").config();
 const link = `${process.env.LINK}/saudeanimal/noticia/lista`;
 
 const getNews = async () => {
-  const news = [];
+  const journal = [];
   const { data } = await axios.get(link);
   const $ = cheerio.load(data);
   $(".cor-veterinaria").map((i, e) => {
     if (e.attribs?.href?.includes("/saudeanimal/noticia")) {
-      return news.push(`${process.env.LINK}${e.attribs?.href}`);
+       journal.push({news:`${process.env.LINK}${e.attribs?.href}`});
     }
   });
-  
-  return news;
+
+  return  {journal};
 };
 
 module.exports = { getNews };
