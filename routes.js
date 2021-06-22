@@ -27,6 +27,7 @@ router.get("/infoVendasCotas", async (req, res) => {
   res.json(response);
 });
 router.get("/realizadoXcotaFamilia", async (req, res) => {
+  console.log(req?.headers?.linha)
   res.send(await getVendasByFamily(req?.headers?.linha));
 });
 router.get("/realizadoXcotaVendedor", async (req, res) => {

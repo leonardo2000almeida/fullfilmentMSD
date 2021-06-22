@@ -32,7 +32,7 @@ const getVendasByFamily = async (linha) => {
   const sells = [];
   sellsByFamily.map(
     ({ NOMEFAMILIAPRODUTO, VALORLIQUIDO, PRODUTO, MES, VENDEDOR }, index) => {
-      if (index < 25 && VALORLIQUIDO !== 0 && NOMEFAMILIAPRODUTO == linha) {
+      if (VALORLIQUIDO !== 0 && NOMEFAMILIAPRODUTO == linha.toUpperCase()) {
         sells.push({NOMEFAMILIAPRODUTO, VALORLIQUIDO, PRODUTO});
       }
     }
