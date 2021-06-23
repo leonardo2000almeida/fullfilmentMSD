@@ -1,7 +1,11 @@
 const express = require("express");
 const { auth } = require("./controller/authController");
 const { getNews } = require("./controller/getNews");
-const { getEstoqueByProduct, getTopVendas, getVendasByFamily } = require("./controller/vendasController");
+const {
+  getEstoqueByProduct,
+  getTopVendas,
+  getVendasByFamily,
+} = require("./controller/vendasController");
 const {
   checkVisits,
   checkUnfinishedVisits,
@@ -27,7 +31,6 @@ router.get("/infoVendasCotas", async (req, res) => {
   res.json(response);
 });
 router.get("/realizadoXcotaFamilia", async (req, res) => {
-  console.log(req?.headers?.linha)
   res.send(await getVendasByFamily(req?.headers?.linha));
 });
 router.get("/realizadoXcotaVendedor", async (req, res) => {
@@ -49,12 +52,10 @@ router.get("/qntVisitasNaoConcluidasMes", async (req, res) => {
   res.json(response);
 });
 router.get("/qntVisitasMes", async (req, res) => {
-  const response = "qntVisitasMes";
-  res.json(response);
+  res.send(await checkTotalVisits(req.headers.email))
 });
 router.get("/qntVisitasNaoConcluidasVendedor", async (req, res) => {
-  const response = "qntVisitasNaoConcluidasVendedor";
-  res.json(response);
+  res.send(await checkUnfinishedVisits(req?.headers?.email));
 });
 router.get("/infoPlanejamentoProxVisitasStatus", async (req, res) => {
   res.send(await checkVisits(req?.headers?.email));

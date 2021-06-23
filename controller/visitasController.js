@@ -1,7 +1,6 @@
 const visits = require("../services/infoPlanejamentoProxVisitasStatus.json");
-const unfineshedVistis = require("../services/qntVisitasNaoConcluidasVendedor.json");
-const unfineshedMonth = require("../services/qntVisitasNaoConcluidasMes.json");
-const totalVisits = require("../services/qntVisitasUnidadeMes.json");
+const unfinshedVisits = require("../services/qntVisitasNaoConcluidasVendedor.json");
+const totalVisits = require("../services/qntVisitasMes.json");
 const { sellers } = require("../services/autenticacao.json");
 const moment = require("moment");
 
@@ -14,7 +13,7 @@ const checkVisits = async (userEmail) => {
     text.push(`Cliente: ${CLIENTE}`);
     text.push(`Data: ${moment(DATAVISITA).format("DD/MM/yyyy")}`);
   });
-  
+
   return { text };
 };
 
@@ -22,44 +21,59 @@ const checkUnfinishedVisits = async (userEmail) => {
   const { nome } = sellers.find(({ email }) => userEmail === email);
   let visits = [];
 
-  map(({ ANOMES }) => {
-    visits.push(`Data: ${ANOMES}`);
+  unfinshedVisits.map(({ ANOMES, VENDEDOR, GRUPOMERCADO, QTDE_VISIT }) => {
+    if (nome == VENDEDOR)
+      visits.push(
+        `Data: ${moment(ANOMES).format("MM/yyyy")}`,
+        `Grupo: ${GRUPOMERCADO}`,
+        `Quantidade: ${QTDE_VISIT}`
+      );
   });
 
-  return { items: visits };
+  return visits;
 };
 
 const checkUnfinishedVisitsMonth = async () => {
   const visits = [];
   let count;
 
-  unfineshedMonth.forEach(({ ANOMES }) => {
+  unfinishedMonth.forEach(({ ANOMES }) => {
     if (count < 5) {
       visits.push(`Data: ${ANOMES}`);
       count++;
     }
   });
+
   return { items: visits };
 };
 
-const checkTotalVisits = async () => {
-  const sortVisits = totalVisits.sort((a, b) => a - b);
+const checkTotalVisits = async (userEmail) => {
+  const { nome } = sellers.find(({ email }) => userEmail === email);
   const visits = [];
-  let count;
+  const month =
+    new Date().getMonth() < 10
+      ? `0${new Date().getMonth() + 1}`
+      : new Date().getMonth() + 1;
 
-  sortVisits.map(({ QTDE_VISIT, ANOMES }) => {
-    if (count < 5 && ANOMES === "2020-06") {
-      visits.push(QTDE_VISIT);
-      count++;
+  totalVisits.map(({ VENDEDOR, QTDE_VISIT, ANOMES, GRUPOMERCADO }) => {
+    if (
+      VENDEDOR === nome &&
+      ANOMES === `${new Date().getFullYear()}-${month}`
+    ) {
+      visits.push(
+        `Grupo: ${GRUPOMERCADO}`,
+        `Quantidade: ${QTDE_VISIT}`,
+        `Data: ${moment(ANOMES).format("MM/yyyy")}`
+      );
     }
   });
 
-  return {qunatidadeDeVisitas: visits}
+  return visits ;
 };
 
 module.exports = {
   checkVisits,
   checkUnfinishedVisits,
   checkUnfinishedVisitsMonth,
-  checkTotalVisits
+  checkTotalVisits,
 };
