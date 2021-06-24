@@ -6,6 +6,7 @@ const {
   getTopVendas,
   getVendasByFamily,
   getVendasByLine,
+  getSellsByClient,
 } = require("./controller/vendasController");
 const {
   checkVisits,
@@ -47,8 +48,7 @@ router.get("/realizadoXcotaVendedorMes", async (req, res) => {
   res.send(await getTopVendas());
 });
 router.get("/realizadoClientePeriodo", async (req, res) => {
-  const response = "realizadoClientePeriodo";
-  res.json(response);
+  res.send(await getSellsByClient());
 });
 router.get("/qntVisitasUnidadeMes", async (req, res) => {
   res.json(await checkTotalVisits());

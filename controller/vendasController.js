@@ -70,7 +70,7 @@ const getSellsByClient = async () => {
     sells.push(`Cliente: ${Cliente}`, `Valor total: ${VALORLIQUIDO}`);
   });
 
-  return {sells};
+  return sells;
 };
 
 module.exports = {
@@ -78,4 +78,5 @@ module.exports = {
   getTopVendas,
   getVendasByFamily,
   getVendasByLine,
+  getSellsByClient
 };
