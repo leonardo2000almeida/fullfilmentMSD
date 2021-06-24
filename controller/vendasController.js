@@ -3,6 +3,7 @@ const { sellers } = require("../services/autenticacao.json");
 const topVendas = require("../services/realizadoXcotaVendedorMes.json");
 const sellsByFamily = require("../services/realizadoXcotaFamilia.json");
 const sellsByLine = require("../services/realizadoXcotaVendedor.json");
+const sellsByClient = require("../services/realizadoClientePeriodo.json");
 
 const getEstoqueByProduct = async (userEmail, productName) => {
   let quant = 0;
@@ -34,24 +35,47 @@ const getVendasByFamily = async (linha) => {
   sellsByFamily.map(
     ({ NOMEFAMILIAPRODUTO, VALORLIQUIDO, PRODUTO, MES, VENDEDOR }, index) => {
       if (VALORLIQUIDO !== 0 && NOMEFAMILIAPRODUTO == linha.toUpperCase()) {
-        sells.push({NOMEFAMILIAPRODUTO, VALORLIQUIDO, PRODUTO});
+        sells.push({ NOMEFAMILIAPRODUTO, VALORLIQUIDO, PRODUTO });
       }
     }
-  ); 
+  );
   return sells;
 };
 
-const getVendasByLine = async(grupo) => {
+const getVendasByLine = async (grupo) => {
   const sells = [];
   let count = 0;
-  sellsByLine.map(({GRUPOMERCADO, VALORLIQUIDO, PRODUTO}, index) => {
-      if(VALORLIQUIDO != 0 && GRUPOMERCADO == grupo?.toUpperCase() && count < 5) {
-          sells.push(`Linha: ${GRUPOMERCADO}`,`valor liquido: ${VALORLIQUIDO}`,`Produto: ${PRODUTO}`);
-          count++;
-      }
+  sellsByLine.map(({ GRUPOMERCADO, VALORLIQUIDO, PRODUTO }, index) => {
+    if (
+      VALORLIQUIDO != 0 &&
+      GRUPOMERCADO == grupo?.toUpperCase() &&
+      count < 5
+    ) {
+      sells.push(
+        `Linha: ${GRUPOMERCADO}`,
+        `valor liquido: ${VALORLIQUIDO}`,
+        `Produto: ${PRODUTO}`
+      );
+      count++;
+    }
   });
 
-  return sells;
-}
+  return {sells};
+};
 
-module.exports = { getEstoqueByProduct, getTopVendas, getVendasByFamily, getVendasByLine};
+const getSellsByClient = async () => {
+  const sells = [];
+
+  sellsByClient.map(({ Cliente, VALORLIQUIDO }) => {
+    sells.push(`Cliente: ${Cliente}`, `Valor total: ${VALORLIQUIDO}`);
+  });
+
+  return {sells};
+};
+
+module.exports = {
+  getEstoqueByProduct,
+  getTopVendas,
+  getVendasByFamily,
+  getVendasByLine,
+};
