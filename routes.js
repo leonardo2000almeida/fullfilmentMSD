@@ -5,6 +5,7 @@ const {
   getEstoqueByProduct,
   getTopVendas,
   getVendasByFamily,
+  getVendasByLine,
 } = require("./controller/vendasController");
 const {
   checkVisits,
@@ -31,7 +32,10 @@ router.get("/infoVendasCotas", async (req, res) => {
   res.json(response);
 });
 router.get("/realizadoXcotaFamilia", async (req, res) => {
-  res.send(await getVendasByFamily(req?.headers?.linha));
+  res.send(await getVendasByFamily(req?.headers?.familia));
+});
+router.get("/realizadoXcotaLinha", async (req, res) => {
+  res.send(await getVendasByLine(req?.headers?.linha));
 });
 router.get("/realizadoXcotaVendedor", async (req, res) => {
   const response = "realizadoXcotaVendedor";

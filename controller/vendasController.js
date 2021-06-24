@@ -2,6 +2,7 @@ const { products } = require("../services/estoque.json");
 const { sellers } = require("../services/autenticacao.json");
 const topVendas = require("../services/realizadoXcotaVendedorMes.json");
 const sellsByFamily = require("../services/realizadoXcotaFamilia.json");
+const sellsByLine = require("../services/realizadoXcotaVendedor.json");
 
 const getEstoqueByProduct = async (userEmail, productName) => {
   let quant = 0;
@@ -40,4 +41,17 @@ const getVendasByFamily = async (linha) => {
   return sells;
 };
 
-module.exports = { getEstoqueByProduct, getTopVendas, getVendasByFamily };
+const getVendasByLine = async(grupo) => {
+  const sells = [];
+  let count = 0;
+  sellsByLine.map(({GRUPOMERCADO, VALORLIQUIDO, PRODUTO}, index) => {
+      if(VALORLIQUIDO != 0 && GRUPOMERCADO == grupo?.toUpperCase() && count < 5) {
+          sells.push(`Linha: ${GRUPOMERCADO}`,`valor liquido: ${VALORLIQUIDO}`,`Produto: ${PRODUTO}`);
+          count++;
+      }
+  });
+
+  return sells;
+}
+
+module.exports = { getEstoqueByProduct, getTopVendas, getVendasByFamily, getVendasByLine};
