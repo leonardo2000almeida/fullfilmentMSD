@@ -36,8 +36,6 @@ router.get("/realizadoXcotaFamilia", async (req, res) => {
   res.send(await getVendasByFamily(req?.headers?.familia));
 });
 router.get("/realizadoXcotaLinha", async (req, res) => {
-  const linha = req?.headers?.linha;
-  console.log(linha)
   res.send(await getVendasByLine(req?.headers?.linha));
 });
 router.get("/realizadoXcotaVendedor", async (req, res) => {
