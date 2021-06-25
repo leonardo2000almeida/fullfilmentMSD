@@ -60,14 +60,17 @@ const getVendasByLine = async (grupo) => {
     }
   });
 
-  return {sells};
+  return { sells };
 };
 
 const getSellsByClient = async () => {
   const sells = [];
-
+  let count = 0;
   sellsByClient.map(({ Cliente, VALORLIQUIDO }) => {
-    sells.push(`Cliente: ${Cliente}`, `Valor total: ${VALORLIQUIDO}`);
+    if (count < 5) {
+      sells.push(`Cliente: ${Cliente}`, `Valor total: ${VALORLIQUIDO}`);
+      ++count;
+    }
   });
 
   return sells;
@@ -78,5 +81,5 @@ module.exports = {
   getTopVendas,
   getVendasByFamily,
   getVendasByLine,
-  getSellsByClient
+  getSellsByClient,
 };
