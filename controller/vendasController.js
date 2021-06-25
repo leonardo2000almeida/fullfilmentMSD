@@ -60,7 +60,7 @@ const getVendasByLine = async (grupo) => {
     }
   });
 
-  return { sells };
+  return sells;
 };
 
 const getSellsByClient = async () => {
